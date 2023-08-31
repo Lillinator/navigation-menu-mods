@@ -1,3 +1,15 @@
+custom_menu_sections_groups:
+  default: >-
+    [{"groups":"group-menu-1","menu":"menu-1"},
+    {"groups":"group-menu-2","menu":"menu-2"},
+    {"groups":"group-menu-3","menu":"menu-3"}]
+  json_schema: '{"type": "array", "format": "table", "uniqueItems": true, "items": {"type": "object", "properties": {"groups": {"type": "string","minLength": 1},},"menu": {"type": "string","minLength": 1},},"additionalProperties": false}}'
+
+
+
+
+
+
 menu_section_1:
   type: string
   default: ""
