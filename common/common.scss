@@ -1,248 +1,87 @@
-// * sidebar background color *
-
-#main-outlet-wrapper {
-    .sidebar-wrapper {
-       background-color: $sidebar_background_color;
-    }
-}
-
-// * sidebar footer background color *
-
-.sidebar-footer-wrapper .sidebar-footer-container {
-    background-color: $sidebar_background_color;
-}
-
-.sidebar-footer-wrapper .sidebar-footer-container:before {
-    background: none;
-}
-
-// * More section background color *
-
-.sidebar-more-section-links-details-content {
-    background-color: $more_section_background_color;
-}
-
-// * active link color *
-
-.sidebar-section-link-wrapper .sidebar-section-link.active {
-    color: $current_link_font_color;
-    background: $current_link_background_color;
-}
-
-// * section headers formatting *
-
-.sidebar-section-wrapper .sidebar-section-header {
-    font-size: #{$header_font_size}px;
-    color: $header_font_color;
-    font-weight: $header_font_weight;
-    // align-items: left;
-}
-
-// * section links *
-
-.sidebar-section-link-wrapper .sidebar-section-link {
-    font-size: #{$link_font_size}px;
-    color: $link_font_color;
-    // font-weight: $link_font_weight;
-    // align-items: left;
-}
-
-// * side-bar link icon color clicked *
-
-.sidebar-section-link-wrapper .sidebar-section-link.active .sidebar-section-link-prefix.icon {
-    color: $current_link_icon_color;
-}
-
-// * side-bar link icon color *
-
-.sidebar-section-link-wrapper .sidebar-section-link .sidebar-section-link-prefix.icon {
-    color: $link_icon_color;
-}
-
-// * hide entire Navigaion Menu from anon in desktop and mobile view*
-
-@if $hide_all_from_anon == "true" {
-   html.anon {
-  // Hide the narrow desktop sidebar 
-  // sidebar mobile version which is activate on desktop too under 1000px width
-  .d-header .hamburger-panel {
-    display: none;
-  }
-  // Hide the header cloak when menu opens
-  .header-cloak {
-    display: none !important;
-    }
-  }
-}
-
-//.anon .sidebar-wrapper .sidebar-container,  
-//    .header-sidebar-toggle,
-//    .d-header .hamburger-panel,
-//    .hamburger-dropdown,
-//    .header-cloak {
-//    display: none
-//    }
-//}
-
-// * hide the Community Section *
-
-@if $hide_community_section == "true" {
-    .sidebar-section-wrapper.sidebar-section[data-section-name="community"] {
-    display: none;
-    }
-} 
-
-// * hide the Community Section from anon users *
-
-@if $hide_community_section_from_anon == "true" {
-    .anon .sidebar-section-wrapper.sidebar-section[data-section-name="community"] {
-    display: none;
-    }
-} 
+@import "str-to-list";
 
 
-// * hide More section from anon users *
+@if $display_section_1_for_these_groups_only !="" {
 
-@if $hide_more_section_from_anon == "true" {
-    .anon .btn-flat.sidebar-more-section-links-details-summary, 
-    .anon .sidebar-more-section-links-details-summary.json-editor-btn-collapse {
-    display: none;
-    }
-}
+    $list_1: str-to-list("#{$display_section_1_for_these_groups_only}", "|");
 
-// * hide More section from all users *
-
-@if $hide_more_section == "true" {
-    .btn-flat.sidebar-more-section-links-details-summary, 
-    .sidebar-more-section-links-details-summary.json-editor-btn-collapse {
-    display: none;
-    }
-}
-
-
-// * hide the Categories Section *
-
-@if $hide_categories_section == "true" {
-    .sidebar-section-wrapper.sidebar-section[data-section-name="categories"] {
-    display: none;
-    }
-} 
-
-// * hide the Categories Section from anon users *
-
-@if $hide_categories_from_anon == "true" {
-    .anon .sidebar-section-wrapper.sidebar-section[data-section-name="categories"] {
-    display: none;
-    }
-} 
-
-// * hide the Tags Section *
-
-@if $hide_tags_section == "true" {
-    .sidebar-section-wrapper.sidebar-section[data-section-name="tags"] {
-    display: none;
-    }
-} 
-// * hide the Tags Section from anon users *
-
-@if $hide_tags_from_anon == "true" {
-    .anon .sidebar-section-wrapper.sidebar-section[data-section-name="tags"] {
-    display: none;
-    }
-} 
-
-// * hide the Messages Section *
-
-@if $hide_messages_section == "true" {
-    .sidebar-section-wrapper.sidebar-section[data-section-name="messages"] {
-    display: none;
-   }
-} 
-
-// * hide the Channels Section *
-
-@if $hide_channels_section == "true" {
-    .sidebar-section-wrapper.sidebar-section[data-section-name="chat-channels"] {
-    display: none;
-   }
-} 
-
-// * hide the Personal Chat Section *
-
-@if $hide_personal_chat_section == "true" {
-    .sidebar-section-wrapper.sidebar-section[data-section-name="chat-dms"] {
-    display: none;
-    }
-} 
-
-// * hide category bullets *
-
-@if $hide_category_bullets == "true" {
-    .sidebar-section-link-wrapper .sidebar-section-link-prefix .prefix-span {
-    display: none;
-    }
-} 
-
-// * sidebar category bullet styling *
-
-.sidebar-section-link-wrapper .sidebar-section-link-prefix .prefix-span {
-    //width: $category_bullet_size;
-    //height: $category_bullet_size;
-    border-radius: $category_bullet_rounding;
-}
-
-// * hide the lock icon for all secure categories in the sidebar *
-
-@if $hide_lock_icon == "true" {
-    .sidebar-section-link-wrapper .sidebar-section-link-prefix.icon .prefix-badge {
-    display: none;
-    }
- } 
-
-// * More sections to hide *
-
-@if $hide_anniversaries == "true" {
-   .sidebar-section-link-wrapper {
-      .sidebar-section-link {
-         &[data-link-name="anniversaries"] {
-         display: none;
-        }
-      }
-   }
-} 
-
-@if $hide_birthdays == "true" {
-   .sidebar-section-link-wrapper {
-      .sidebar-section-link {
-         &[data-link-name="birthdays"] {
-         display: none;
-        }
-      }
-   }
-} 
-
-@if $hide_docs == "true" {
-   .sidebar-section-link-wrapper {
-      .sidebar-section-link {
-         &[data-link-name="docs"] {
-         display: none;
-        }
-      }
-   }
-} 
-
-// * hide custom sections *
-
-@if $hide_custom_section_from_anon == "true" {
-    .anon .sidebar-section-wrapper.sidebar-section[data-section-name="#{$custom_section_to_hide}"] {
+    .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_1}"] {
         display: none;
     }
+
+    @each $group in $list_1 {
+        body.group-#{$group} {
+            .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_1}"] {
+                display: block;
+            }
+        }
+    }
 }
 
-@if $hide_custom_section_from_users == "true" {
-  body:not(.staff) {
-    .sidebar-section-wrapper.sidebar-section[data-section-name="#{$custom_section_to_hide}"] {
+@if $display_section_2_for_these_groups_only !="" {
+
+    $list_2: str-to-list("#{$display_section_2_for_these_groups_only}", "|");
+
+    .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_2}"] {
         display: none;
     }
-  }
+
+    @each $group in $list_2 {
+        body.group-#{$group} {
+            .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_2}"] {
+                display: block;
+            }
+        }
+    }
+}
+
+@if $display_section_3_for_these_groups_only !="" {
+
+    $list_3: str-to-list("#{$display_section_3_for_these_groups_only}", "|");
+
+    .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_3}"] {
+        display: none;
+    }
+
+    @each $group in $list_3 {
+        body.group-#{$group} {
+            .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_3}"] {
+                display: block;
+            }
+        }
+    }
+}
+
+@if $display_section_4_for_these_groups_only !="" {
+
+    $list_4: str-to-list("#{$display_section_4_for_these_groups_only}", "|");
+
+    .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_4}"] {
+        display: none;
+    }
+
+    @each $group in $list_4 {
+        body.group-#{$group} {
+            .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_4}"] {
+                display: block;
+            }
+        }
+    }
+}
+
+@if $display_section_5_for_these_groups_only !="" {
+
+    $list_5: str-to-list("#{$display_section_5_for_these_groups_only}", "|");
+
+    .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_5}"] {
+        display: none;
+    }
+
+    @each $group in $list_5 {
+        body.group-#{$group} {
+            .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_5}"] {
+                display: block;
+            }
+        }
+    }
 }
