@@ -1,14 +1,4 @@
-  import Component from "@ember/component";
-
-  const user = api.getCurrentUser();
-  const body = document.querySelector('body');
-
-  if (user) {
-    user
-      .groups
-      .map((g) => `group-${g.name}`)
-      .forEach((g) => body.classList.add(g));
-  }
+import Component from "@ember/component";
 
 export default Component.extend {
   get GroupNavigationMenus() {
