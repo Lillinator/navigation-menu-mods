@@ -10,7 +10,7 @@ var groups = custom_menu_sections_groups.groups;
 var menus = custom_menu_sections_groups.menu 
 
 groups.forEach(function(group) {
-  var sidebarSection = querySelector('.sidebar-section-wrapper.sidebar-section[data-section-name="' + menu + '"]');
+  var sidebarSection = document.querySelector('.sidebar-section-wrapper.sidebar-section[data-section-name="' + menu + '"]');
   if (sidebarSection) {
      sidebarSection.style.display = 'none';
      }  
