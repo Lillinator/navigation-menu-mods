@@ -1,12 +1,12 @@
 
-    {{#if (and showTrust showHere)}}
-      <div class="welcome-link-banner-wrapper">
-        <div class="wrap welcome-link-banner">
-          <div class="welcome-wrapper">
-            <div class="welcome-content">
-              <h2>{{html-safe (theme-i18n "meta_banner.welcome")}}</h2>
-              <p>{{html-safe (theme-i18n "meta_banner.subtitle")}}</p>
-            </div>
+    @each $group in $list_1 {
+        body.group-#{$group} {
+            .sidebar-section-wrapper.sidebar-section[data-section-name="#{$menu_section_1}"] {
+                display: block;
+            }
+        }
+    }
+
             <div class="featured-banner-link">
               {{#each bannerLinks as |bl|}}
                 <div>
