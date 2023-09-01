@@ -1,10 +1,13 @@
 import Component from "@ember/component";
+import discourseComputed from "discourse-common/utils/decorators";
+import { inject as service } from "@ember/service";
+import { computed } from "@ember/object";
 
-export default Component.extend {
-  get GroupNavigationMenus() {
+export default Component.extend({
+
+  GroupNavigationMenus: computed(function () {
     return JSON.parse(settings.custom_menu_sections_groups);
-  }
-});
+})
 
 var usergroups = custom_menu_sections_groups.usergroups; 
 var menus = custom_menu_sections_groups.menu 
