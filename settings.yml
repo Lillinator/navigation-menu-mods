@@ -1,6 +1,6 @@
 custom_menu_groups:
   default: >-
-    [{"usergroups":["groups-1"],"menu":"menu-1"},
-    {"usergroups":["groups-2"],"menu":"menu-2"},
-    {"usergroups":["groups-3"],"menu":"menu-3"}]
-  json_schema: '{"type": "array", "format": "table", "uniqueItems": true, "items": {"type": "object", "properties": {"usergroups": {"type": "array", "items": {"type": "string"}}, "menu": {"type": "string","minLength": 1}}, "additionalProperties": false}}'
+    [{"usergroups":"groups-1,groups-2","menu":"menu-1"},
+    {"usergroups":"groups-3,groups-4","menu":"menu-2"},
+    {"usergroups":"groups-5,groups-6","menu":"menu-3"}]
+  json_schema: '{"type": "array", "format": "table", "uniqueItems": true, "items": {"type": "object", "properties": {"usergroups": {"type": "string","minLength": 1}, "menu": {"type": "string","minLength": 1}}, "additionalProperties": false}}'
