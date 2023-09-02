@@ -4,25 +4,34 @@ import { inject as service } from "@ember/service";
 import { computed } from "@ember/object";
 
 export default Component.extend({
+  init() {
+    this._super(...arguments);
+    const customMenuSectionsGroups = JSON.parse(
+      settings.custom_menu_sections_groups
+    );
 
-  GroupNavigationMenus: computed(function () {
-    return JSON.parse(settings.custom_menu_sections_groups);
-})
+    customMenuSectionsGroups.forEach(({ usergroups, menu }) => {
+      let usergroupsArray = usergroups.split("|");
 
-var usergroups = custom_menu_sections_groups.usergroups;
-let usergroupsArray = usergroups.split('|');
-var menus = custom_menu_sections_groups.menu 
+      usergroupsArray.forEach((usergroup) => {
+        document
+          .querySelectorAll(".sidebar-section-wrapper.sidebar-section")
+          .forEach((sidebarSection) => {
+            sidebarSection.style.display = "none";
+          });
 
-groups.forEach(function(usergroup) {
-  var sidebarSection = document.querySelector('.sidebar-section-wrapper.sidebar-section[data-section-name="' + menu + '"]');
-  if (sidebarSection) {
-     sidebarSection.style.display = 'none';
-     }  
-  var bodygroup = document.querySelector('body.group-' + usergroup);
-  if (bodygroup) {
-    var sidebarSection = bodygroup ('.sidebar-section-wrapper.sidebar-section[data-section-name="' + menu + '"]');
-    if (sidebarSection) {
-      sidebarSection.style.display = 'block';
-    }
-  }
+        const bodygroup = document.querySelector("body.group-" + usergroup);
+        if (bodygroup) {
+          const sidebarSection = bodygroup.querySelector(
+            '.sidebar-section-wrapper.sidebar-section[data-section-name="' +
+              menu +
+              '"]'
+          );
+          if (sidebarSection) {
+            sidebarSection.style.display = "block";
+          }
+        }
+      });
+    });
+  },
 });
