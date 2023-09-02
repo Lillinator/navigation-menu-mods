@@ -9,7 +9,8 @@ export default Component.extend({
     return JSON.parse(settings.custom_menu_sections_groups);
 })
 
-var usergroups = custom_menu_sections_groups.usergroups; 
+var usergroups = custom_menu_sections_groups.usergroups;
+let usergroupsArray = usergroups.split('|');
 var menus = custom_menu_sections_groups.menu 
 
 groups.forEach(function(usergroup) {
