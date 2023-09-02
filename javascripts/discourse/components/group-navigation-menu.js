@@ -12,26 +12,32 @@ export default Component.extend({
 
     customMenuSectionsGroups.forEach(({ usergroups, menu }) => {
       let usergroupsArray = usergroups.split("|");
+      let menuName = menu;
+
 
       usergroupsArray.forEach((usergroup) => {
         document
-          .querySelectorAll(".sidebar-section-wrapper.sidebar-section")
-          .forEach((sidebarSection) => {
-            sidebarSection.style.display = "none";
-          });
-
-        const bodygroup = document.querySelector("body.group-" + usergroup);
-        if (bodygroup) {
-          const sidebarSection = bodygroup.querySelector(
-            '.sidebar-section-wrapper.sidebar-section[data-section-name="' +
-              menu +
-              '"]'
-          );
-          if (sidebarSection) {
-            sidebarSection.style.display = "block";
-          }
+        const sidebarSection = document.querySelectorAll(
+          '.sidebar-section-wrapper.sidebar-section[data-section-name="' +
+          menu +
+          '"]'
+        );
+        if (sidebarSection) {
+          sidebarSection.style.display = "none";
         }
-      });
+
+      const bodygroup = document.querySelector("body.group-" + usergroup);
+      if (bodygroup) {
+        const sidebarSection = bodygroup.querySelector(
+          '.sidebar-section-wrapper.sidebar-section[data-section-name="' +
+          menu +
+          '"]'
+        );
+        if (sidebarSection) {
+          sidebarSection.style.display = "block";
+        }
+      }
     });
+  });
   },
 });
